@@ -6,3 +6,13 @@ resource "aws_vpc" "vpc_virginia" {
     env  = "Dev"
   }
 }
+
+resource "aws_vpc" "vpc_ohio" {
+  cidr_block = var.ohio_cidr
+  tags = {
+    Name = "VPC_OHIO"
+    name = "prueba"
+    env  = "Dev"
+  }
+  provider = aws.ohio
+}

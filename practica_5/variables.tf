@@ -3,3 +3,7 @@ variable "virginia_cidr" {
     type       = string
     sensitive = false
 }
+
+variable "ohio_cidr" {
+
+}
