@@ -7,12 +7,13 @@ resource "aws_vpc" "vpc_virginia" {
   }
 }
 
-#resource "aws_vpc" "vpc_ohio" {
-#  cidr_block = var.ohio_cidr
-#  tags = {
-#    Name = "VPC_OHIO"
-#    name = "prueba"
-#    env  = "Dev"
-#  }
-#  provider = aws.ohio
-#}
+resource "aws_subnet" "subnet_publica" {
+  vpc_id            = aws_vpc.vpc_virginia.id
+  cidr_block        = var.public_subnet
+  map_customer_owned_ip_on_launch = true
+}
+
+resource "aws_subnet" "subnet_private" {
+  vpc_id            = aws_vpc.vpc_virginia.id
+  cidr_block        = var.private_subnet
+}

@@ -4,5 +4,16 @@ variable "virginia_cidr" {
     sensitive = true
 }
 
+variable "public_subnet" {
+    description = "Public Subnet"
+    type        = string
+}
+
+variable "private_subnet" {
+    description = "Private Subnet"
+    type        = string
+}
+
+
 variable "ohio_cidr" {
 }
