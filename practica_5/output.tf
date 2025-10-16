@@ -1,19 +1,9 @@
-output "ec2_public_ip_1" {
+output "ec2_public_ip" {
    description = "Public IP of the EC2 instance"
-   value = aws_instance.public_instance_1.public_ip
+   value = aws_instance.public_instance.public_ip
 }
 
-output "ec2_public_ip_2" {
-   description = "Public IP of the EC2 instance"
-   value = aws_instance.public_instance_2.public_ip
-}
-
-output "ec2_private_state_1" {
+output "ec2_private_state" {
    description = "Private IP of the EC2 instance"
-   value = aws_instance.private_instance_1.instance_state
-}
-
-output "ec2_private_state_2" {
-   description = "Private IP of the EC2 instance"
-   value = aws_instance.private_instance_2.instance_state
+   value = aws_instance.private_instance.instance_state
 }
