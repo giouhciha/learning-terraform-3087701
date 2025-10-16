@@ -2,8 +2,6 @@ resource "aws_vpc" "vpc_virginia" {
   cidr_block = var.virginia_cidr
   tags = {
     Name = "VPC_VIRGINIA"
-    name = "prueba"
-    env  = "Dev"
   }
 }
 
@@ -13,7 +11,6 @@ resource "aws_subnet" "subnet_publica" {
   map_public_ip_on_launch = true
   tags = {
     Name = "Public Subnet"
-    env  = "Dev"
   }
 }
 
@@ -22,6 +19,5 @@ resource "aws_subnet" "subnet_private" {
   cidr_block        = var.subnets[1]
   tags = {
     Name = "Private Subnet"
-    env  = "Dev"
   }
 }
