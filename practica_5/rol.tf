@@ -16,7 +16,7 @@ resource "aws_iam_role" "ssm_role" {
   })
 }
 
-resource "aws_aim_role_policy_attachment" "ssm_role_attachment" {
+resource "aws_iam_role_policy_attachment" "ssm_role_attachment" {
   role       = aws_iam_role.ssm_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
