@@ -4,6 +4,5 @@ variable "virginia_cidr" {
     sensitive = false
 }
 
-variable "ohio_cidr" {
-
-}
+#variable "ohio_cidr" {
+#}
