@@ -1,7 +1,5 @@
 variable "virginia_cidr" {
-
-}
-
-variable "ohio_cidr" {
-
+    description = "CIDR Viginia"
+    type       = string
+    sensitive = false
 }
