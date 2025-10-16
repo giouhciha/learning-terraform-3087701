@@ -11,5 +11,9 @@ output "ec2_public_ip_2" {
 output "ec2_private_state_1" {
    description = "Private IP of the EC2 instance"
    value = aws_instance.private_instance_1.instance_state
-  
+}
+
+output "ec2_private_state_2" {
+   description = "Private IP of the EC2 instance"
+   value = aws_instance.private_instance_2.instance_state
 }
