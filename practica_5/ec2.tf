@@ -4,7 +4,7 @@ resource "aws_instance" "public_instance" {
   subnet_id = aws_subnet.subnet_publica.id
 
   tags = {
-    Name = "Publica Instance 1"
+    Name = "Publica Instance"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_instance" "private_instance" {
   iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
 
   tags = {
-    Name = "backend Instance 1"
+    Name = "backend Instance"
   }
   
 }
