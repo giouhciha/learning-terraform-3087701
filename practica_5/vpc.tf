@@ -7,7 +7,7 @@ resource "aws_vpc" "vpc_ohio" {
 
 resource "aws_subnet" "subnet_publica" {
   vpc_id                  = aws_vpc.vpc_ohio.id
-  cidr_block              = var.subnets["ohio"]
+  cidr_block              = var.subnets["public_ohio"]
   map_public_ip_on_launch = true
   tags = {
     Name = "Public Subnet"
@@ -16,7 +16,7 @@ resource "aws_subnet" "subnet_publica" {
 
 resource "aws_subnet" "subnet_private" {
   vpc_id            = aws_vpc.vpc_ohio.id
-  cidr_block        = var.subnets["ohio"]
+  cidr_block        = var.subnets["private_ohio"]
   tags = {
     Name = "Private Subnet"
   }

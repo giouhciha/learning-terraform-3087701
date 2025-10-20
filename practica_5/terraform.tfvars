@@ -2,8 +2,11 @@ virginia_cidr  = "10.10.0.0/16"
 ohio_cidr = "10.20.0.0/16"
 
 subnets = {
-  virginia = "10.10.0.0/24"
-  ohio     = "10.20.0.0/24"
+  public_virginia  = "10.10.0.0/24"
+  private_virginia = "10.10.1.0/24"
+  
+  public_ohio      = "10.20.0.0/24"
+  private_ohio     = "10.20.1.0/24"
 }
 
 amis = {
