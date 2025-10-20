@@ -14,7 +14,7 @@ resource "aws_instance" "private_instance" {
   subnet_id = aws_subnet.subnet_private.id
   key_name = data.aws_key_pair.deployer_key.key_name
 
-  iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
+  #iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
 
   tags = {
     Name = "backend Instance"
