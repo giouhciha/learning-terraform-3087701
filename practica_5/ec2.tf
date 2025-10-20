@@ -16,6 +16,8 @@ resource "aws_instance" "private_instance" {
 
   #iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
 
+  depends_on = [ aws_subnet.subnet_private ]
+
   tags = {
     Name = "backend Instance"
   }
