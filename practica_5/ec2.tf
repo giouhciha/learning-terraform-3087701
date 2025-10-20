@@ -9,7 +9,7 @@
 #}
 
 resource "aws_instance" "private_instance" {
-  ami           = var.amis["us-east-2"]
+  ami           = var.amis["ohio"]
   instance_type = "t3.micro"
   subnet_id = aws_subnet.subnet_private.id
   key_name = data.aws_key_pair.deployer_key.key_name
