@@ -4,10 +4,17 @@ variable "virginia_cidr" {
     sensitive = true
 }
 
+variable "ohio_cidr" {
+    description = "CIDR Ohio"
+    type       = string
+    sensitive = true
+}
+
 variable "subnets" {
     description = "Subnets"
-    type        = list(string)
+    type        = map(string)
 }
+
 
 variable "tags" {
     description = "Tags del proyecto"
