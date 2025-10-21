@@ -34,6 +34,10 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_route_table" "public_crt" {
   vpc_id = aws_vpc.vpc_ohio.id
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
   tags = {
     Name = "Public crt"
   }
