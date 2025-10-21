@@ -1,7 +1,7 @@
 resource "aws_vpc" "vpc_ohio" {
   cidr_block = var.ohio_cidr
   tags = {
-    Name = "VPC_VIRGINIA"
+    Name = "VPC_Ohio"
   }
 }
 
@@ -34,9 +34,9 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_route_table" "public_crt" {
   vpc_id = aws_vpc.vpc_ohio.id
 
-  lifecycle {
-    create_before_destroy = true
-  }
+#  lifecycle {
+#    create_before_destroy = true
+#  }
 
   tags = {
     Name = "Public crt"
@@ -58,7 +58,7 @@ resource "aws_security_group" "sg_public_instance" {
     description      = "SSH from Virginia CIDR"
     from_port        = 22
     to_port          = 22
-    protocol         = "tcp"
+    protocol         = "ssh"
     cidr_blocks      = [var.sg_ingress_cidr]
   } 
 
