@@ -4,7 +4,7 @@ resource "aws_instance" "public_instance" {
   subnet_id = aws_subnet.subnet_publica.id
   key_name = data.aws_key_pair.deployer_key.key_name
 
-  vpc_security_group_ids = [ aws_internet_gateway.igw.id ]
+  vpc_security_group_ids = [ aws_security_group.sg_public_instance.id ]
 
   tags = {
     Name = "Publica Instance"
