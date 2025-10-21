@@ -34,12 +34,6 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_route_table" "public_crt" {
   vpc_id = aws_vpc.vpc_ohio.id
 
-  route {
-    cidr_block = "10.0.0.0/24"
-    gateway_id = aws_internet_gateway.igw.id
-  }
-
-
   tags = {
     Name = "Public crt"
   }
