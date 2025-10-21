@@ -25,3 +25,8 @@ variable "amis" {
     description = "AMIs por region"
     type        = map(string)  
 }
+
+variable "sg_ingress_cidr" {
+    description = "CIDR para reglas de ingreso"
+    type       = string
+}
