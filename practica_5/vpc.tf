@@ -34,9 +34,10 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_route_table" "public_crt" {
   vpc_id = aws_vpc.vpc_ohio.id
 
-#  lifecycle {
-#    create_before_destroy = true
-#  }
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
 
   tags = {
     Name = "Public crt"
@@ -58,7 +59,7 @@ resource "aws_security_group" "sg_public_instance" {
     description      = "SSH from Virginia CIDR"
     from_port        = 22
     to_port          = 22
-    protocol         = "ssh"
+    protocol         = "tcp"
     cidr_blocks      = [var.sg_ingress_cidr]
   } 
 
