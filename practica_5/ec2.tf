@@ -1,5 +1,5 @@
 resource "aws_instance" "public_instance" {
-  ami           = "ami-0341d95f75f311023"
+  ami           = var.amis["ohio"]
   instance_type = "t3.micro"
   subnet_id = aws_subnet.subnet_publica.id
   key_name = data.aws_key_pair.deployer_key.key_name
