@@ -36,3 +36,9 @@ variable "ssh-key" {
     type       = string
     sensitive = true
 }
+
+variable "enable_monitoring" {
+    description = "Enable monitoring instance"
+    type        = bool
+    default     = false
+}

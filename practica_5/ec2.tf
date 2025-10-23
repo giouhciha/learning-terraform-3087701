@@ -17,7 +17,7 @@ resource "aws_instance" "public_instance" {
   vpc_security_group_ids = [ aws_security_group.sg_public_instance.id ]
 
   tags = {
-    Name = var.instancias[count.index]
+    Name = var.instancias[count.index]-local.sufix
   }
 
   provisioner "local-exec" {
@@ -37,6 +37,22 @@ resource "aws_instance" "public_instance" {
     }
   }
 }
+
+resource "aws_instance" "monitoring_instance" {
+  count = var.enable_monitoring ? 1 : 0
+  ami           = var.amis["virnigia"]
+  instance_type = "t3.micro"
+  subnet_id = aws_subnet.subnet_publica.id
+  key_name = data.aws_key_pair.deployer_key.key_name
+
+  vpc_security_group_ids = [ aws_security_group.sg_public_instance.id ]
+
+  tags = {
+    Name = "monitoring Instance-${local.sufix}"
+  }
+  
+}
+
 
 
 #resource "aws_instance" "private_instance" {

@@ -1,7 +1,7 @@
 resource "aws_vpc" "vpc_ohio" {
   cidr_block = var.ohio_cidr
   tags = {
-    Name = "VPC_Ohio"
+    Name = "VPC_Ohio-${local.sufix}"
   }
 }
 
@@ -10,7 +10,7 @@ resource "aws_subnet" "subnet_publica" {
   cidr_block              = var.subnets["public_ohio"]
   map_public_ip_on_launch = true
   tags = {
-    Name = "Public Subnet"
+    Name = "Public Subnet-${local.sufix}"
   }
 }
 
@@ -18,7 +18,7 @@ resource "aws_subnet" "subnet_private" {
   vpc_id            = aws_vpc.vpc_ohio.id
   cidr_block        = var.subnets["private_ohio"]
   tags = {
-    Name = "Private Subnet"
+    Name = "Private Subnet-${local.sufix}"
   }
 }
 
@@ -27,7 +27,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc_ohio.id
 
   tags = {
-    Name = "igw-vpc-ohio"
+    Name = "igw-vpc-ohio-${local.sufix}"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_route_table" "public_crt" {
   }
 
   tags = {
-    Name = "Public crt"
+    Name = "Public crt-${local.sufix}"
   }
 }
 
@@ -73,6 +73,6 @@ resource "aws_security_group" "sg_public_instance" {
     }
 
   tags = {
-    Name = "Public Instance SG"
+    Name = "Public Instance SG-${local.sufix}"
   }
 }
