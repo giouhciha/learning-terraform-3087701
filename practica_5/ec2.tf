@@ -1,7 +1,7 @@
 variable "instancias" {
     description = "Nombres de las instacias"
     type       = list(string)
-    default    = ["publica", "privada", "jumpserver"]
+    default    = ["apache"]
 }
 
 
@@ -13,29 +13,30 @@ resource "aws_instance" "public_instance" {
   instance_type = "t3.micro"
   subnet_id = aws_subnet.subnet_publica.id
   key_name = data.aws_key_pair.deployer_key.key_name
-
   vpc_security_group_ids = [ aws_security_group.sg_public_instance.id ]
+  user_data = file("userdata.sh")
+
 
   tags = {
     Name = "${var.instancias[count.index]}-${local.sufix}"
   }
 
-  provisioner "local-exec" {
-    command = "echo ${self.public_ip} > public_ip.txt"
-  }
+  #rovisioner "local-exec" {
+  # command = "echo ${self.public_ip} > public_ip.txt"
+  #
 
-  provisioner "remote-exec" {
-    inline = [
-      "echo 'Hello, World!' > ~/hello.txt"
-    ]
+  #rovisioner "remote-exec" {
+  # inline = [
+  #   "echo 'Hello, World!' > ~/hello.txt"
+  # ]
 
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = var.ssh-key
-      host        = self.public_ip
-    }
-  }
+  # connection {
+  #   type        = "ssh"
+  #   user        = "ec2-user"
+  #   private_key = var.ssh-key
+  #   host        = self.public_ip
+  # }
+  #
 }
 
 resource "aws_instance" "monitoring_instance" {

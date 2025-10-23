@@ -63,6 +63,14 @@ resource "aws_security_group" "sg_public_instance" {
     cidr_blocks      = [var.sg_ingress_cidr]
   } 
 
+  ingress {
+    description      = "HTTPm Virginia CIDR"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [var.sg_ingress_cidr]
+  } 
+
   egress {
     description      = "All outbound traffic"
     from_port        = 0
