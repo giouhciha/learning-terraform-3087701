@@ -13,6 +13,19 @@ resource "aws_instance" "public_instance" {
   provisioner "local-exec" {
     command = "echo ${self.public_ip} > public_ip.txt"
   }
+
+  provisioner "remote-exec" {
+    inline = [
+      "echo 'Hello, World!' > ~/hello.txt"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      private_key = var.ssh-key
+      host        = self.public_ip
+    }
+  }
 }
 
 

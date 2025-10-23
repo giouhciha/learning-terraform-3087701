@@ -30,3 +30,8 @@ variable "sg_ingress_cidr" {
     description = "CIDR para reglas de ingreso"
     type       = string
 }   
+
+variable "ssh-key" {
+    description = "SSH Key para acceso a instancias"
+    type       = string
+}
