@@ -40,7 +40,7 @@ resource "aws_instance" "public_instance" {
 
 resource "aws_instance" "monitoring_instance" {
   count = var.enable_monitoring ? 1 : 0
-  ami           = var.amis["virnigia"]
+  ami           = var.amis["ohio"]
   instance_type = "t3.micro"
   subnet_id = aws_subnet.subnet_publica.id
   key_name = data.aws_key_pair.deployer_key.key_name
