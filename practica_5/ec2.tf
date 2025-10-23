@@ -1,4 +1,14 @@
+variable "instancias" {
+    description = "Nombres de las instacias"
+    type       = list(string)
+    default    = ["publica", "privada", "jumpserver"]
+}
+
+
+
+
 resource "aws_instance" "public_instance" {
+  count = length(var.instancias)
   ami           = var.amis["ohio"]
   instance_type = "t3.micro"
   subnet_id = aws_subnet.subnet_publica.id
@@ -7,7 +17,7 @@ resource "aws_instance" "public_instance" {
   vpc_security_group_ids = [ aws_security_group.sg_public_instance.id ]
 
   tags = {
-    Name = "Publica Instance"
+    Name = var.instancias[count.index]
   }
 
   provisioner "local-exec" {
