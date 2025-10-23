@@ -9,11 +9,10 @@ resource "aws_instance" "public_instance" {
   tags = {
     Name = "Publica Instance"
   }
-}
 
-
-provisioner "local-exec" {
-    command = "echo ${aws_instance.public_instance.public_ip} > public_ip.txt"
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} > public_ip.txt"
+  }
 }
 
 
