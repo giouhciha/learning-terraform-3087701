@@ -11,6 +11,12 @@ resource "aws_instance" "public_instance" {
   }
 }
 
+
+provisioner "local-exec" {
+    command = "echo ${aws_instance.public_instance.public_ip} > public_ip.txt"
+}
+
+
 #resource "aws_instance" "private_instance" {
 #  ami           = var.amis["ohio"]
 #  instance_type = "t3.micro"
