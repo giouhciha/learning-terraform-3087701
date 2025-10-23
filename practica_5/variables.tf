@@ -34,4 +34,5 @@ variable "sg_ingress_cidr" {
 variable "ssh-key" {
     description = "SSH Key para acceso a instancias"
     type       = string
+    sensitive = true
 }
