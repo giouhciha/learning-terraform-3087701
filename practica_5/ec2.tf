@@ -4,7 +4,12 @@ variable "instancias" {
     default    = ["apache"]
 }
 
-
+resource "null_resource" "script_trigger" {
+  triggers = {
+    script_hash = filesha256("userdata.sh")
+  }
+  
+}
 
 
 resource "aws_instance" "public_instance" {
@@ -17,7 +22,7 @@ resource "aws_instance" "public_instance" {
   user_data = file("userdata.sh")
 
   lifecycle {
-    replace_triggered_by = [ locals.file_hash ]
+   replace_triggered_by = [ null_resource.script_trigger ]
   }
 
   tags = {
