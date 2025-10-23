@@ -42,3 +42,8 @@ variable "enable_monitoring" {
     type        = bool
     default     = false
 }
+
+variable "ingress_port_list" {
+    description = "Lista de puertos para reglas de ingreso"
+    type        = list(number)
+}
