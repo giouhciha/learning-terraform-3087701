@@ -12,3 +12,7 @@ resource "random_string" "sufijo-s3" {
 locals {
   s3_sufix = random_string.sufijo-s3.id
 }
+
+locals {
+  file_hash = filesha256("userdata.sh")
+}
