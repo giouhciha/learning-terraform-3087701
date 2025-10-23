@@ -16,6 +16,9 @@ resource "aws_instance" "public_instance" {
   vpc_security_group_ids = [ aws_security_group.sg_public_instance.id ]
   user_data = file("userdata.sh")
 
+  lifecycle {
+    create_before_destroy = true
+  }
 
   tags = {
     Name = "${var.instancias[count.index]}-${local.sufix}"
