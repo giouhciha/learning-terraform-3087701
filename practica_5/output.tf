@@ -7,3 +7,8 @@
 #   description = "Private IP of the EC2 instance"
 #   value = aws_instance.private_instance.instance_state
 #}
+
+output "ec2_public_instance_volume_id" {
+    description = "ID of the EBS volume"
+    value       = aws_instance.public_instance.volume_id
+}
