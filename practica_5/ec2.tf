@@ -33,7 +33,7 @@ resource "aws_instance" "public_instance" {
 
 output "ec2_public_instance_volume_ids" {
   description = "IDs de los volúmenes EBS"
-  value       = [for instance in aws_instance.public_instance : instance.volume_id]
+  value       = [for instance in aws_instance.public_instance : instance.root_block_device[0].volume_id]
 }
   #rovisioner "local-exec" {
   # command = "echo ${self.public_ip} > public_ip.txt"
