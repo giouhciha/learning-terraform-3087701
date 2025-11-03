@@ -10,5 +10,5 @@
 
 output "ec2_public_instance_volume_id" {
     description = "ID of the EBS volume"
-    value       = aws_instance.public_instance.volume_id
+    value       = aws_instance.public_instance[count.index].volume_id
 }
