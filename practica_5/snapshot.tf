@@ -12,6 +12,6 @@ resource "aws_ebs_snapshot" "snap_public_instance" {
   volume_id = each.value.root_block_device[0].volume_id
 
   tags = {
-    Name = "HelloWorld_snap_${each.key}"
+    Name = each.value.tags["Name"]
   }
 }
