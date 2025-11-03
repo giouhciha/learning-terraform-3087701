@@ -29,6 +29,12 @@ resource "aws_instance" "public_instance" {
     Name = "${var.instancias[count.index]}-${local.sufix}"
   }
 
+}
+
+output "ec2_public_instance_volume_ids" {
+  description = "IDs de los volúmenes EBS"
+  value       = [for instance in aws_instance.public_instance : instance.volume_id]
+}
   #rovisioner "local-exec" {
   # command = "echo ${self.public_ip} > public_ip.txt"
   #
@@ -45,7 +51,7 @@ resource "aws_instance" "public_instance" {
   #   host        = self.public_ip
   # }
   #
-}
+#}
 
 resource "aws_instance" "monitoring_instance" {
   count = var.enable_monitoring ? 1 : 0
